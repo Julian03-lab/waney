@@ -11,7 +11,6 @@ export default function RootLayout ({ children }) {
       <head />
       <body>
         {children}
-        <div className='fixed -z-20 -left-28 -bottom-72 h-[700px] w-[700px] bg-black rounded-full' />
       </body>
     </html>
   )

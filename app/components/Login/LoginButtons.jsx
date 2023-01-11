@@ -1,11 +1,9 @@
 'use client'
 
-import GoogleLogo from 'app/components/svgs/GoogleLogo'
-import { auth } from 'app/services/firebaseClient'
-import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth'
 import Link from 'next/link'
+import GoogleLogin from './GoogleLogin'
 
-function Button ({ action, text, icon, buttonstyle }) {
+export function Button ({ action, text, icon, buttonstyle }) {
   return (
     <button className={`${buttonstyle} py-[6px] px-[12px] flex flex-row gap-1 rounded-full w-full leading-8 place-content-center`} onClick={action}>
       {icon && <div className='p-1 bg-white rounded-full'>{icon}</div>}
@@ -16,13 +14,6 @@ function Button ({ action, text, icon, buttonstyle }) {
 }
 
 export default function LoginButtons () {
-  const googleAuth = new GoogleAuthProvider()
-
-  const googleLogin = async () => {
-    const result = await signInWithPopup(auth, googleAuth)
-    console.log(result)
-  }
-
   return (
     <>
       <Link href='/login' className='w-full'>
@@ -36,7 +27,7 @@ export default function LoginButtons () {
         <h3 className='font-bold text-sm text-secondary-100'>OR</h3>
         <div className='border-secondary-100 h-0 w-12 border-2' />
       </div>
-      <Button action={googleLogin} text='Log In with Google' icon={<GoogleLogo width={20} height={20} />} buttonstyle='bg-secondary-100 font-extrabold text-[20px] text-black' />
+      <GoogleLogin />
     </>
   )
 }
