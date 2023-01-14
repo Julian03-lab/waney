@@ -5,7 +5,7 @@ import GoogleLogin from './GoogleLogin'
 
 export function Button ({ action, text, icon, buttonstyle }) {
   return (
-    <button className={`${buttonstyle} py-[6px] px-[12px] flex flex-row gap-1 rounded-full w-full leading-8 place-content-center`} onClick={action}>
+    <button className={`${buttonstyle} py-[6px] px-[12px] flex flex-row gap-2 rounded-full w-full leading-8 justify-center items-center`} onClick={action}>
       {icon && <div className='p-1 bg-white rounded-full'>{icon}</div>}
       {text}
     </button>

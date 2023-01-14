@@ -8,6 +8,7 @@ import Movements from '../svgs/Movements'
 import { auth } from 'app/services/firebaseClient'
 import { useAuthState } from 'react-firebase-hooks/auth'
 import { useRouter } from 'next/navigation'
+import { useEffect } from 'react'
 
 function RenderIcon ({ icon }) {
   const iconClass = 'w-[24px] h-[24px]'
@@ -27,9 +28,13 @@ function NavBarItem ({ links, activeRoute, setActiveRoute }) {
   const [user] = useAuthState(auth)
   const router = useRouter()
 
-  if (!user) {
-    router.push('/')
-  }
+  useEffect(() => {
+    if (!user) {
+      router.push('/')
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [user])
+
   return (
 
     <ul className='flex flex-col items-start px-6 py-2 bg-secondary-100'>
