@@ -1,5 +1,6 @@
 import BackButton from 'app/components/Login/BackButton'
 import GoogleLogin from 'app/components/Login/GoogleLogin'
+import Password from 'app/components/Login/Password'
 import Link from 'next/link'
 
 export default function LoginPage () {
@@ -24,11 +25,7 @@ export default function LoginPage () {
               <input className='bg-primary-400 rounded-full px-3 py-2 font-medium text-base text-white w-full outline-none' type='email' placeholder='Type here...' id='email' />
             </div>
             <div className='flex flex-col items-start w-full'>
-              <label className='text-xl font-extrabold text-white' htmlFor='password'>Contraseña</label>
-              <div className='flex items-center bg-primary-400 px-3 py-2 rounded-full w-full'>
-                <input className='bg-primary-400 font-medium text-sm text-white w-full outline-none ' type='password' placeholder='Type here...' id='password' />
-                <div className='w-6 h-6 bg-white' />
-              </div>
+              <Password htmlFor='password' text='Contraseña' />
             </div>
           </div>
           <Link href='/forgot-password' className='self-end font-extrabold text-sm text-white hover:text-secondary-100 hover:underline'>
