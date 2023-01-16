@@ -9,7 +9,7 @@ module.exports = {
       nunito: 'Nunito'
     },
     colors: {
-      black: '#30444f',
+      black: '#1E1E24',
       white: '#ebecee',
       primary: {
         100: '#5B8291',
@@ -18,7 +18,7 @@ module.exports = {
         400: '#405B66'
       },
       secondary: {
-        100: '#98DAD8',
+        100: '#72F0FF',
         200: '#89C4C2',
         300: '#7AAEAD',
         400: '#6A9997'

@@ -35,6 +35,6 @@ export default function GoogleLogin () {
   }
 
   return (
-    <Button action={googleLogin} text='Login with Google' icon={<GoogleLogo width={20} height={20} />} buttonstyle='bg-secondary-100 font-extrabold text-[14px] text-black' />
+    <Button action={googleLogin} text='Iniciar sesión con Google' icon={<GoogleLogo width={20} height={20} />} buttonstyle='bg-secondary-100 font-extrabold text-[14px] text-black' />
   )
 }
