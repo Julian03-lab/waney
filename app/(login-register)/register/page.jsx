@@ -4,7 +4,7 @@ import Link from 'next/link'
 
 export default function RegisterPage () {
   return (
-    <>
+    <div>
       <BackButton />
       <div>
         <h3 className='text-lg text-white font-semibold'>Toma el primer paso para manejar tus finanzas.</h3>
@@ -39,6 +39,6 @@ export default function RegisterPage () {
           </Link>
         </div>
       </main>
-    </>
+    </div>
   )
 }
