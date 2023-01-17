@@ -17,15 +17,15 @@ export default function LoginButtons () {
   return (
     <div className='flex flex-col justify-center items-center gap-3 w-full'>
       <Link href='/login' className='w-full'>
-        <Button text='Iniciar sesión' buttonstyle='bg-secondary-100 font-extrabold text-[20px] text-black' />
+        <Button text='Iniciar sesión' buttonstyle='bg-primary-100 font-extrabold text-[20px] text-black' />
       </Link>
       <Link href='/register' className='w-full'>
-        <Button text='Registrarse' buttonstyle='border-4 border-secondary-100 font-extrabold text-[20px] text-secondary-100' />
+        <Button text='Registrarse' buttonstyle='border-4 border-primary-100 font-extrabold text-[20px] text-primary-100' />
       </Link>
       <div className='flex items-center gap-2 w-full'>
-        <div className='border-secondary-100 h-0 border-2 w-full' />
-        <h3 className='font-bold text-sm text-secondary-100'>O</h3>
-        <div className='border-secondary-100 h-0 border-2 w-full' />
+        <div className='border-primary-100 h-0 border-2 w-full' />
+        <h3 className='font-bold text-sm text-primary-100'>O</h3>
+        <div className='border-primary-100 h-0 border-2 w-full' />
       </div>
       <GoogleLogin />
     </div>

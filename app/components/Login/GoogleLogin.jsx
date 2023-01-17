@@ -31,10 +31,10 @@ export default function GoogleLogin () {
         }
         localStorage.setItem('user', JSON.stringify(user))
       })
-      .catch()
+      .catch(e => console.log(e))
   }
 
   return (
-    <Button action={googleLogin} text='Iniciar sesión con Google' icon={<GoogleLogo width={20} height={20} />} buttonstyle='bg-secondary-100 font-extrabold text-[14px] text-black' />
+    <Button action={googleLogin} text='Iniciar sesión con Google' icon={<GoogleLogo width={20} height={20} />} buttonstyle='bg-primary-100 font-extrabold text-[14px] text-black' />
   )
 }
