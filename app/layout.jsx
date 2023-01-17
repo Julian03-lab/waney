@@ -9,7 +9,7 @@ export default function RootLayout ({ children }) {
   return (
     <html className={nunito.className}>
       <head />
-      <body className='bg-black flex flex-col justify-between px-9 py-14 h-screen'>
+      <body>
         {children}
       </body>
     </html>
