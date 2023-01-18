@@ -16,7 +16,8 @@ module.exports = {
         200: '#67d8e6',
         300: '#5bc0cc',
         400: '#50a8b3'
-      }
+      },
+      error: '#FB4C4C'
     }
   },
   plugins: []

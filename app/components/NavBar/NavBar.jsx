@@ -5,7 +5,6 @@ import Link from 'next/link'
 import NavBarItem from './NavBarItem'
 import Bars from '../svgs/Bars'
 import UserIcon from '../svgs/UserIcon'
-import Image from 'next/image'
 
 const links = [
   { route: '/home', label: 'Home' },

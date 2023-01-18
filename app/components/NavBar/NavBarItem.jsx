@@ -47,7 +47,7 @@ function NavBarItem ({ links, activeRoute, setActiveRoute }) {
         </li>
       ))}
       <li className='w-full my-2'>
-        <Link href='/signout' className='text-white fill-white hover:cursor-pointer  hover:text-black hover:bg-primary-300 py-2 px-3  rounded-full font-bold text-xl flex justify-center hover:fill-primary-400 border-2 border-primary-100'>
+        <Link href='/logout' className='text-white fill-white hover:cursor-pointer  hover:text-black hover:bg-primary-300 py-2 px-3  rounded-full font-bold text-xl flex justify-center hover:fill-primary-400 border-2 border-primary-100'>
           Cerrar sesión
         </Link>
       </li>
