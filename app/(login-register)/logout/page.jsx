@@ -8,7 +8,7 @@ import { useEffect } from 'react'
 import { useAuthState } from 'react-firebase-hooks/auth'
 
 export default function Logout () {
-  const [user] = useAuthState(auth)
+  const [user, loading] = useAuthState(auth)
   const router = useRouter()
 
   const logout = () => {
@@ -20,11 +20,12 @@ export default function Logout () {
   }
 
   useEffect(() => {
-    if (!user) {
+    if (!user && !loading) {
       router.push('/login')
     }
+
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [user])
+  }, [user, loading])
 
   return (
     <>

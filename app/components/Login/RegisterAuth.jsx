@@ -40,11 +40,10 @@ export default function RegisterAuth () {
       return
     }
     return await createUserWithEmailAndPassword(auth, email, password)
-      .then((result) => {
+      .then(() => {
         updateProfile(auth.currentUser, { displayName }).then(() => {
           router.push('/home')
         })
-        console.log(result.user)
       })
       .catch(e => {
         setError(errorList[e.code])
