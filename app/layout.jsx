@@ -9,7 +9,7 @@ export default function RootLayout ({ children }) {
   return (
     <html>
       <head />
-      <body className={`${nunito.className} bg-black`}>
+      <body className={nunito.className}>
         {children}
       </body>
     </html>

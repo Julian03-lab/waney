@@ -1,12 +1,14 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Password from './Password'
 import { auth } from 'app/services/firebaseClient'
 import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth'
+import { useAuthState } from 'react-firebase-hooks/auth'
 import { useRouter } from 'next/navigation'
 
 export default function RegisterAuth () {
+  const [user] = useAuthState(auth)
   const [email, setEmail] = useState('')
   const [displayName, setDisplayName] = useState('')
   const [password, setPassword] = useState('')
@@ -56,6 +58,13 @@ export default function RegisterAuth () {
   const handlePassword = (e) => {
     setPassword(e.target.value)
   }
+
+  useEffect(() => {
+    if (user) {
+      router.push('/home')
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [user])
 
   return (
     <form className='flex flex-col items-center gap-1'>
