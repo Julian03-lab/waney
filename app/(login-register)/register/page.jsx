@@ -1,5 +1,5 @@
 import BackButton from 'app/components/Login/BackButton'
-import RegisterAuth from 'app/components/Login/RegisterAuth'
+import RegisterAuth from 'app/(login-register)/register/RegisterAuth'
 import Link from 'next/link'
 
 export default function RegisterPage () {
