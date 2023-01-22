@@ -1,7 +1,7 @@
 import BackButton from 'app/components/Login/BackButton'
 import GoogleLogin from 'app/components/Login/GoogleLogin'
-import Password from 'app/components/Login/Password'
 import Link from 'next/link'
+import LoginAuth from './LoginAuth'
 
 export default function LoginPage () {
   return (
@@ -18,23 +18,7 @@ export default function LoginPage () {
           <h3 className='font-bold text-sm text-primary-100'>O</h3>
           <div className='border-primary-100 h-0 border-2 w-full' />
         </div>
-        <form className='flex flex-col items-center gap-4'>
-          <div className='flex flex-col gap-4 justify-center items-center w-full'>
-            <div className='flex flex-col items-start w-full'>
-              <label className='text-xl font-extrabold text-white' htmlFor='email'>Email</label>
-              <input className='bg-primary-400 rounded-full px-3 py-2 font-medium text-base text-white w-full outline-none' type='email' placeholder='Type here...' id='email' />
-            </div>
-            <div className='flex flex-col items-start w-full'>
-              <Password htmlFor='password' text='Contraseña' />
-            </div>
-          </div>
-          <Link href='/forgot-password' className='self-end font-extrabold text-sm text-white hover:text-primary-100 hover:underline'>
-            ¿Olvidaste tu contraseña?
-          </Link>
-          <div className='flex flex-col gap-4'>
-            <button className='py-[6px] px-10 flex flex-row gap-1 rounded-full w-full leading-8 place-content-center bg-primary-100 font-extrabold text-[20px] text-black shadow'>Inicia sesión</button>
-          </div>
-        </form>
+        <LoginAuth />
         <div className='flex flex-col items-center'>
           <h3 className='text-sm font-semibold text-white'>No tienes una cuenta?</h3>
           <Link href='/register' className='text-primary-100 font-extrabold text-sm'>
