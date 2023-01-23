@@ -1,6 +1,7 @@
 'use client'
 
 import Loader from 'app/components/Loader'
+import Isologo from 'app/components/svgs/Isologo'
 import { auth } from 'app/services/firebaseClient'
 import { signOut } from 'firebase/auth'
 import { useRouter } from 'next/navigation'
@@ -32,9 +33,15 @@ export default function Logout () {
       {
       user
         ? (
-          <div>
-            <h1 className='text-white font-bold text-2xl'>Estas seguro que quieres cerrar sesión?</h1>
-            <button onClick={logout}>Cerrar sesión</button>
+          <div className='h-screen flex flex-col justify-center'>
+            <div className='flex flex-col rounded-xl items-center border-2 border-primary-100 shadow py-10 px-2 gap-6'>
+              <Isologo width='72' height='72' />
+              <h1 className='text-white font-semibold text-xl text-center'>¿Quieres cerrar tu sesion de Waney?</h1>
+              <div className='flex flex-col gap-3'>
+                <button onClick={logout} className='py-1 px-3 rounded-full leading-8 bg-primary-100 font-extrabold text-base text-black shadow'>Cerrar sesión</button>
+                <button onClick={() => router.back()} className='py-1 px-3 rounded-full leading-8 bg-black font-extrabold text-base text-primary-100 shadow border-2 border-primary-100'>Cancelar</button>
+              </div>
+            </div>
           </div>)
         : <Loader />
     }
