@@ -5,8 +5,9 @@ import Link from 'next/link'
 import NavBarItem from './NavBarItem'
 import Bars from '../svgs/Bars'
 import UserIcon from '../svgs/UserIcon'
+import Isologo from '../svgs/Isologo'
 
-const links = [
+export const links = [
   { route: '/home', label: 'Home' },
   { route: '/movements', label: 'Movements' },
   { route: '/accounts', label: 'Accounts' },
@@ -23,17 +24,18 @@ export default function NavBar () {
 
   return (
     <nav className='flex flex-col w-full'>
-      <div className='flex justify-between items-center py-5 px-9 bg-black'>
+      <div className='flex justify-between items-center py-4 px-9 bg-black'>
         <button
           onClick={toggleDropdown}
-          className='text-primary lg:hidden'
+          className='text-primary hidden'
           type='button'
         >
           <Bars width={24} height={24} className='fill-primary-100 hover:fill-primary-100' />
         </button>
         <Link href='/profile' onClick={() => setActiveRoute('')}>
-          <UserIcon width={24} height={24} className='fill-primary-100 hover:fill-primary-300' />
+          <UserIcon width={32} height={32} className='fill-primary-100 hover:fill-primary-300' />
         </Link>
+        <Isologo width='32' height='32' />
       </div>
       {dropdownActive && <NavBarItem links={links} activeRoute={activeRoute} setActiveRoute={setActiveRoute} />}
     </nav>
