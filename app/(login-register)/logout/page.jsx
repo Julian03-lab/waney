@@ -14,7 +14,7 @@ export default function Logout () {
 
   const logout = () => {
     signOut(auth).then(() => {
-      router.push('/')
+      router.replace('/')
     }).catch((error) => {
       console.log(error)
     })
@@ -33,13 +33,13 @@ export default function Logout () {
       {
       user
         ? (
-          <div className='h-screen flex flex-col justify-center'>
-            <div className='flex flex-col rounded-xl items-center border-2 border-primary-100 shadow py-10 px-2 gap-6'>
+          <div id='body' className='h-screen flex flex-col justify-center ' onClick={(e) => e.target.id === 'body' ? router.replace('/home') : null}>
+            <div className='flex flex-col rounded-xl items-center bg-[#1b1b20] shadow py-10 px-6 gap-6'>
               <Isologo width='72' height='72' />
-              <h1 className='text-white font-semibold text-xl text-center'>¿Quieres cerrar tu sesion de Waney?</h1>
+              <h1 className='text-white font-bold text-xl text-center'>¿Quieres cerrar tu sesion de Waney?</h1>
               <div className='flex flex-col gap-3'>
                 <button onClick={logout} className='py-1 px-3 rounded-full leading-8 bg-primary-100 font-extrabold text-base text-black shadow'>Cerrar sesión</button>
-                <button onClick={() => router.back()} className='py-1 px-3 rounded-full leading-8 bg-black font-extrabold text-base text-primary-100 shadow border-2 border-primary-100'>Cancelar</button>
+                <button onClick={() => router.replace('/home')} className='py-1 px-3 rounded-full leading-8 bg-black font-extrabold text-base text-primary-100 shadow border-2 border-primary-100'>Cancelar</button>
               </div>
             </div>
           </div>)
