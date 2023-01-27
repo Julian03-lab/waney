@@ -1,16 +1,18 @@
-export default function ShortMovement () {
+export default function ShortMovement ({ amount, date, category, type, account, description }) {
   return (
-    <li className='flex justify-between p-2 bg-black-secondary rounded-xl shadow-md'>
+    <li className='flex justify-between py-2 px-3 bg-black-secondary rounded-xl shadow-md'>
       <div className='flex items-center gap-3'>
-        <div className='p-5 rounded-xl bg-white' />
+        <i className='bi bi-gift text-2xl rounded-lg text-primary-100' />
         <div className='flex flex-col items-start justify-center'>
-          <h3 className='text-white font-bold'>Sueldo</h3>
-          <p className='text-white font-medium text-sm'>MercadoPago</p>
+          <h3 className='text-white font-bold truncate max-w-[135px]'>{description}</h3>
+          <p className='text-white font-medium text-sm'>{account}</p>
         </div>
       </div>
       <div className='flex flex-col items-end justify-center'>
-        <h3 className='text-success font-bold'>+ $3.102</h3>
-        <p className='text-white font-medium text-sm'>25/1/23</p>
+        <h3 className={`${type === 'income' ? 'text-success' : 'text-error'} font-bold`}>
+          {type === 'income' ? '+ $' + amount : '- $' + amount}
+        </h3>
+        <p className='text-white font-medium text-sm'>{date.split('-').reverse().join('/')}</p>
       </div>
     </li>
   )
