@@ -70,11 +70,11 @@ export default function RegisterAuth () {
       <div className='flex flex-col gap-4 justify-center items-center w-full '>
         <div className='flex flex-col items-start w-full'>
           <label className='text-lg font-extrabold text-white' htmlFor='name'>Nombre y apellido</label>
-          <input required className='bg-primary-400 rounded-full px-3 py-2 font-semibold text-base text-black w-full outline-none placeholder:text-black placeholder:text-opacity-50' type='text' placeholder='John Doe' id='name' value={displayName} onChange={e => setDisplayName(e.target.value)} />
+          <input required className='bg-primary-400 rounded-full px-3 py-2 font-semibold text-base text-black-primary w-full outline-none placeholder:text-black-primary placeholder:text-opacity-50' type='text' placeholder='John Doe' id='name' value={displayName} onChange={e => setDisplayName(e.target.value)} />
         </div>
         <div className='flex flex-col items-start w-full'>
           <label className='text-lg font-extrabold text-white' htmlFor='email'>Email</label>
-          <input required className='bg-primary-400 rounded-full px-3 py-2 font-semibold text-base text-black w-full outline-none placeholder:text-black placeholder:text-opacity-50' type='email' placeholder='example@email.xyz' id='email' onChange={e => setEmail(e.target.value)} value={email} />
+          <input required className='bg-primary-400 rounded-full px-3 py-2 font-semibold text-base text-black-primary w-full outline-none placeholder:text-black-primary placeholder:text-opacity-50' type='email' placeholder='example@email.xyz' id='email' onChange={e => setEmail(e.target.value)} value={email} />
         </div>
         <div className='flex flex-col items-start w-full'>
           <Password htmlFor='password' text='Contraseña' handleConfirm={handleConfirm} handlePassword={handlePassword} onChange={e => setPassword(e.target.value)} value={password} />
@@ -85,7 +85,7 @@ export default function RegisterAuth () {
         <p className='self-start font-medium text-base text-error focus:font-bold'> &nbsp; {error ? '🛇 ' + error : ''}</p>
       </div>
       <div className='flex flex-col gap-4'>
-        <button className='py-[6px] px-10 flex flex-row gap-1 rounded-full w-full leading-8 place-content-center bg-primary-100 font-extrabold text-[20px] text-black shadow' onClick={handleRegister}>Registrarse</button>
+        <button className='py-[6px] px-10 flex flex-row gap-1 rounded-full w-full leading-8 place-content-center bg-primary-100 font-extrabold text-[20px] text-black-primary shadow' onClick={handleRegister}>Registrarse</button>
       </div>
     </form>
 

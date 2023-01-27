@@ -13,7 +13,10 @@ module.exports = {
       nunito: 'Nunito'
     },
     colors: {
-      black: '#1E1E24',
+      black: {
+        primary: '#191A1F',
+        secondary: '#202126'
+      },
       white: '#ebecee',
       primary: {
         100: '#45ADFF',
@@ -21,7 +24,8 @@ module.exports = {
         300: '#5bc0cc',
         400: '#50a8b3'
       },
-      error: '#FB4C4C'
+      error: '#FB4C4C',
+      success: '#6aff45'
     }
   },
   plugins: []

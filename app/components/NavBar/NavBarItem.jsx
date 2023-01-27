@@ -37,17 +37,17 @@ function NavBarItem ({ links, activeRoute, setActiveRoute }) {
 
   return (
 
-    <ul className='flex flex-col items-start px-9 py-4 bg-black gap-2 border-b-2 border-primary-100'>
+    <ul className='flex flex-col items-start px-9 py-4 bg-black-primary gap-2 border-b-2 border-primary-100'>
       {links.map(({ route, label }) => (
         <li key={route} className='w-full'>
-          <Link href={route} onClick={() => setActiveRoute(label)} className={`${activeRoute === label ? ' text-primary-100 fill-primary-100 border-2 border-primary-100' : 'text-white fill-white'} hover:cursor-pointer hover:bg-primary-400 py-2 px-3 rounded-full font-bold text-xl flex gap-4 hover:fill-black hover:text-black bg-black`}>
+          <Link href={route} onClick={() => setActiveRoute(label)} className={`${activeRoute === label ? ' text-primary-100 fill-primary-100 border-2 border-primary-100' : 'text-white fill-white'} hover:cursor-pointer hover:bg-primary-400 py-2 px-3 rounded-full font-bold text-xl flex gap-4 hover:fill-black-primary hover:text-black-primary bg-black-primary`}>
             <RenderIcon icon={label} />
             {label}
           </Link>
         </li>
       ))}
       <li className='w-full my-2'>
-        <Link href='/logout' className='text-white fill-white hover:cursor-pointer  hover:text-black hover:bg-primary-300 py-2 px-3  rounded-full font-bold text-xl flex justify-center hover:fill-primary-400 border-2 border-primary-100'>
+        <Link href='/logout' className='text-white fill-white hover:cursor-pointer  hover:text-black-primary hover:bg-primary-300 py-2 px-3  rounded-full font-bold text-xl flex justify-center hover:fill-primary-400 border-2 border-primary-100'>
           Cerrar sesión
         </Link>
       </li>

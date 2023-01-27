@@ -38,8 +38,8 @@ export default function Logout () {
               <Isologo width='72' height='72' />
               <h1 className='text-white font-bold text-xl text-center'>¿Quieres cerrar tu sesion de Waney?</h1>
               <div className='flex flex-col gap-3'>
-                <button onClick={logout} className='py-1 px-3 rounded-full leading-8 bg-primary-100 font-extrabold text-base text-black shadow'>Cerrar sesión</button>
-                <button onClick={() => router.replace('/home')} className='py-1 px-3 rounded-full leading-8 bg-black font-extrabold text-base text-primary-100 shadow border-2 border-primary-100'>Cancelar</button>
+                <button onClick={logout} className='py-1 px-3 rounded-full leading-8 bg-primary-100 font-extrabold text-base text-black-primary shadow'>Cerrar sesión</button>
+                <button onClick={() => router.replace('/home')} className='py-1 px-3 rounded-full leading-8 bg-black-primary font-extrabold text-base text-primary-100 shadow border-2 border-primary-100'>Cancelar</button>
               </div>
             </div>
           </div>)

@@ -6,7 +6,7 @@ const okine = Okine({ src: '/fonts/MADEOkineSansPERSONALUSE-Bold.otf' })
 
 export default function LandingPage () {
   return (
-    <main className='bg-black flex flex-col justify-between px-9 py-14 h-screen'>
+    <main className='bg-black-primary flex flex-col justify-between px-9 py-14 h-screen'>
       <div className='flex flex-col items-center content-center gap-6 p-0'>
         <Isologo width={200} height={200} />
         <div className='flex flex-col items-center content-center gap-1 text-center'>

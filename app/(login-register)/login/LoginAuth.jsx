@@ -48,7 +48,7 @@ export default function LoginAuth () {
       <div className='flex flex-col gap-4 justify-center items-center w-full'>
         <div className='flex flex-col items-start w-full'>
           <label className='text-xl font-extrabold text-white' htmlFor='email'>Email</label>
-          <input className='bg-primary-400 rounded-full px-3 py-2 font-semibold text-base text-black w-full outline-none placeholder:text-black placeholder:text-opacity-50' type='email' placeholder='example@email.xyz' id='email' onChange={(e) => setEmail(e.target.value)} />
+          <input className='bg-primary-400 rounded-full px-3 py-2 font-semibold text-base text-black-primary w-full outline-none placeholder:text-black-primary placeholder:text-opacity-50' type='email' placeholder='example@email.xyz' id='email' onChange={(e) => setEmail(e.target.value)} />
         </div>
         <div className='flex flex-col w-full'>
           <Password htmlFor='password' text='Contraseña' handlePassword={handlePassword} />
@@ -58,7 +58,7 @@ export default function LoginAuth () {
         ¿Olvidaste tu contraseña?
       </Link>
       <div className='flex flex-col gap-4'>
-        <button className='py-[6px] px-10 flex flex-row gap-1 rounded-full w-full leading-8 place-content-center bg-primary-100 font-extrabold text-[20px] text-black shadow' onClick={handleLogin}>Inicia sesión</button>
+        <button className='py-[6px] px-10 flex flex-row gap-1 rounded-full w-full leading-8 place-content-center bg-primary-100 font-extrabold text-[20px] text-black-primary shadow' onClick={handleLogin}>Inicia sesión</button>
       </div>
     </form>
 

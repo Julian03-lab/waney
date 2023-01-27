@@ -24,7 +24,7 @@ export default function NavBar () {
 
   return (
     <nav className='flex flex-col w-full'>
-      <div className='flex justify-between items-center py-4 px-9 bg-black'>
+      <div className='flex justify-between items-center py-4 px-9 bg-black-primary'>
         <button
           onClick={toggleDropdown}
           className='text-primary hidden'

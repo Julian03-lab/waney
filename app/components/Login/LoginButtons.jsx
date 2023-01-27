@@ -17,7 +17,7 @@ export default function LoginButtons () {
   return (
     <div className='flex flex-col justify-center items-center gap-3 w-full'>
       <Link href='/login' className='w-full'>
-        <Button text='Iniciar sesión' buttonstyle='bg-primary-100 font-extrabold text-[20px] text-black' />
+        <Button text='Iniciar sesión' buttonstyle='bg-primary-100 font-extrabold text-[20px] text-black-primary' />
       </Link>
       <Link href='/register' className='w-full'>
         <Button text='Registrarse' buttonstyle='border-4 border-primary-100 font-extrabold text-[20px] text-primary-100' />

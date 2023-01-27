@@ -40,7 +40,7 @@ export default function BottomNav () {
 
   return (
     <footer className='w-full'>
-      <ul className=' flex flex-row justify-between items-center px-9 py-3 bg-black border-t-2 border-t-primary-100'>
+      <ul className=' flex flex-row justify-between items-center px-9 py-3 bg-black-primary border-t-2 border-t-primary-100'>
         {links.map(({ route, label }) => (
           <li key={route}>
             <Link href={route} onClick={() => setActiveRoute(label)}>
