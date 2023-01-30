@@ -7,6 +7,7 @@ import { signInWithEmailAndPassword } from 'firebase/auth'
 import { useAuthState } from 'react-firebase-hooks/auth'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
+import { useCookies } from 'react-cookie'
 
 export default function LoginAuth () {
   const [user] = useAuthState(auth)
@@ -14,6 +15,7 @@ export default function LoginAuth () {
   const [password, setPassword] = useState('')
   const [error, setError] = useState('')
   const router = useRouter()
+  const [cookie, setCookie] = useCookies(['userID'])
 
   const errorList = {
     'auth/invalid-email': 'El email no es valido.',
@@ -25,6 +27,7 @@ export default function LoginAuth () {
     e.preventDefault()
     return await signInWithEmailAndPassword(auth, email, password)
       .then(() => {
+        setCookie('userID', auth.currentUser.uid, { path: '/' })
         router.push('/home')
       })
       .catch(e => {

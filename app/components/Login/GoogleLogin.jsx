@@ -7,11 +7,14 @@ import { useAuthState } from 'react-firebase-hooks/auth'
 import { Button } from './LoginButtons'
 import GoogleLogo from 'app/components/svgs/GoogleLogo'
 import { useEffect } from 'react'
+import { useCookies } from 'react-cookie'
 
 export default function GoogleLogin () {
   const googleAuth = new GoogleAuthProvider()
   const [user] = useAuthState(auth)
   const router = useRouter()
+  // eslint-disable-next-line no-unused-vars
+  const [cookies, setCookie] = useCookies(['userID'])
 
   useEffect(() => {
     if (user) {
@@ -22,14 +25,9 @@ export default function GoogleLogin () {
 
   const googleLogin = async () => {
     return await signInWithPopup(auth, googleAuth)
-      .then(result => {
-        const { displayName, email, photoURL } = result.user
-        const user = {
-          displayName,
-          email,
-          photoURL
-        }
-        localStorage.setItem('user', JSON.stringify(user))
+      .then(() => {
+        setCookie('userID', auth.currentUser.uid, { path: '/' })
+        router.push('/home')
       })
       .catch(e => console.log(e))
   }

@@ -2,9 +2,12 @@
 import Link from 'next/link'
 import ShortMovement from './ShortMovement'
 import getMovements from 'app/services/getMovements'
+import { cookies } from 'next/headers'
 
 export default async function MovementsSection () {
-  const movements = await getMovements()
+  const nextCookies = cookies()
+  const token = nextCookies.get('userID')
+  const movements = await getMovements(token)
 
   return (
     <div className='flex flex-col gap-2'>
@@ -14,9 +17,9 @@ export default async function MovementsSection () {
           Ver Más
         </Link>
       </div>
-      <ul className='flex flex-col gap-1 min-h-[252px]'>
+      <ul className='flex flex-col gap-1 h-64 overflow-y-auto'>
         {movements
-          ? movements.slice(0, 4).map(({ amount, date, category, type, account, description, id }) => (
+          ? movements.map(({ amount, date, category, type, account, description, id }) => (
             <ShortMovement key={id} amount={amount} date={date} category={category} type={type} account={account} description={description} />
           ))
           : <div className='flex flex-col items-center justify-center h-full gap-3'>

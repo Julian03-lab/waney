@@ -7,13 +7,17 @@ import { signOut } from 'firebase/auth'
 import { useRouter } from 'next/navigation'
 import { useEffect } from 'react'
 import { useAuthState } from 'react-firebase-hooks/auth'
+import { useCookies } from 'react-cookie'
 
 export default function Logout () {
   const [user, loading] = useAuthState(auth)
   const router = useRouter()
+  // eslint-disable-next-line no-unused-vars
+  const [cookie, setCookie, removeCookie] = useCookies(['userID'])
 
   const logout = () => {
     signOut(auth).then(() => {
+      removeCookie('userID')
       router.replace('/')
     }).catch((error) => {
       console.log(error)

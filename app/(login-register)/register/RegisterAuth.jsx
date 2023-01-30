@@ -6,6 +6,7 @@ import { auth } from 'app/services/firebaseClient'
 import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth'
 import { useAuthState } from 'react-firebase-hooks/auth'
 import { useRouter } from 'next/navigation'
+import { useCookies } from 'react-cookie'
 
 export default function RegisterAuth () {
   const [user] = useAuthState(auth)
@@ -15,6 +16,8 @@ export default function RegisterAuth () {
   const [confirmPassword, setConfirmPassword] = useState('')
   const [error, setError] = useState('')
   const router = useRouter()
+  // eslint-disable-next-line no-unused-vars
+  const [cookie, setCookie] = useCookies(['userID'])
 
   const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{8,})/
 
@@ -41,9 +44,11 @@ export default function RegisterAuth () {
     }
     return await createUserWithEmailAndPassword(auth, email, password)
       .then(() => {
-        updateProfile(auth.currentUser, { displayName }).then(() => {
-          router.push('/home')
-        })
+        updateProfile(auth.currentUser, { displayName })
+          .then(() => {
+            setCookie('userID', auth.currentUser.uid, { path: '/' })
+            router.push('/home')
+          })
       })
       .catch(e => {
         setError(errorList[e.code])

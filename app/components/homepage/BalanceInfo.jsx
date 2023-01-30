@@ -10,7 +10,7 @@ export default function BalanceInfo () {
           <span className='text-black-primary font-extrabold text-sm'>ARS</span>
         </div>
       </div>
-      <OptionButton icon='cash-stack' text='Cuentas' optionStyle='px-3 py-2' />
+      <OptionButton href='categories' icon='cash-stack' text='Cuentas' optionStyle='px-3 py-2' />
     </div>
   )
 }

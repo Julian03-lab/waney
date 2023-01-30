@@ -1,8 +1,10 @@
-export default function OptionButton ({ text, onClick, optionStyle, icon }) {
+import Link from 'next/link'
+
+export default function OptionButton ({ text, href, optionStyle, icon }) {
   return (
-    <button className={`flex flex-col bg-black-secondary justify-center items-center rounded-xl ${optionStyle} text-white text-xs font-semibold shadow-md`} onClick={onClick}>
+    <Link href={href} className={`flex flex-col bg-black-secondary justify-center items-center rounded-xl ${optionStyle} text-white text-xs font-bold shadow-md hover:text-primary-100 `}>
       <i className={`bi bi-${icon} text-2xl`} />
       {text}
-    </button>
+    </Link>
   )
 }
