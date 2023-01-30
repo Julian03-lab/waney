@@ -57,7 +57,7 @@ export default function Income () {
   if (loading) { return <Loader /> }
 
   return (
-    <form className='flex flex-col justify-center gap-4 w-full py-7 px-9'>
+    <form className='flex flex-col justify-center gap-4 w-full'>
       <div className='relative'>
         <input type='number' name='amount' id='amount' onChange={(e) => handleChanges(e.target.name, parseInt(e.target.value))} value={values.amount.value} className={`${values.amount.value ? 'opacity-100' : 'opacity-50'} w-full pt-6 pb-2 px-2 font-semibold py text-base bg-black-primary border-2 rounded-xl text-white peer focus:opacity-100 focus:outline-none border-primary-100 focus:shadow-primary-100 focus:shadow-glow`} min={0} max={10} placeholder='999.999' />
         <label htmlFor='amount' className='opacity-100 absolute text-xs font-bold top-2 left-2 text-primary-100 peer-focus:opacity-100'>Cantidad</label>

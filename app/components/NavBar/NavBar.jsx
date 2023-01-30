@@ -23,7 +23,7 @@ export default function NavBar () {
   }
 
   return (
-    <nav className='flex flex-col w-full'>
+    <nav className='flex flex-col w-full fixed top-0'>
       <div className='flex justify-between items-center py-4 px-9 bg-black'>
         <button
           onClick={toggleDropdown}

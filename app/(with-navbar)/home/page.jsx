@@ -10,7 +10,7 @@ function MovementsSectionLoader () {
       <div className='flex justify-between'>
         <h2 className='text-base font-bold text-white'>Ultimos Movimientos</h2>
       </div>
-      <div className='flex flex-col gap-1 min-h-[252px] animate-pulse'>
+      <div className='flex flex-col gap-1 h-[252px] animate-pulse'>
         <div className='w-full bg-black-secondary h-14 rounded-xl' />
         <div className='w-full bg-black-secondary h-14 rounded-xl' />
         <div className='w-full bg-black-secondary h-14 rounded-xl' />
@@ -22,19 +22,19 @@ function MovementsSectionLoader () {
 
 export default function LandingPage () {
   return (
-    <section className='flex flex-col w-full px-9 gap-5'>
-      <article className='flex flex-col gap-5'>
+    <>
+      <div className='flex flex-col gap-5 w-full'>
         <BalanceInfo />
         <OptionsList />
-      </article>
-      <hr className='border border-primary-100' />
-      <article className='flex flex-col gap-6'>
+      </div>
+      <hr className='border border-primary-100 w-full' />
+      <div className='flex flex-col gap-6 w-full'>
         <Suspense fallback={<MovementsSectionLoader />}>
           <MovementsSection />
         </Suspense>
 
-      </article>
+      </div>
       <MovementsButtons />
-    </section>
+    </>
   )
 }
