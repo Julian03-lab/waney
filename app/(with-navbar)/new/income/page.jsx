@@ -1,7 +1,7 @@
 'use client'
 
 import Loader from 'app/components/Loader'
-import useMovement from 'app/components/balance/MakeMovement'
+import useMovement from 'app/components/balance/useMovement'
 import { useRouter } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import 'styles/movements.css'
