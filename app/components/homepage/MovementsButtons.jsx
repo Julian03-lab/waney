@@ -1,21 +1,17 @@
 'use client'
-
-import { useRouter } from 'next/navigation'
+import Link from 'next/link'
 
 export default function MovementsButtons () {
-  const router = useRouter()
 
-  const handleIngreso = () => {
-    router.push('/new/income')
-  }
+  
   return (
     <div className='flex w-full gap-2 justify-center items-center'>
-      <button onClick={handleIngreso} className='py-1 text-black-primary rounded-xl w-full font-bold leading-8 bg-success'>
+      <Link href={'/new/income'} className='py-1 text-center text-black-primary rounded-xl w-full font-bold leading-8 bg-success'>
         Ingreso
-      </button>
-      <button className='w-full py-1 font-bold leading-8 text-black-primary rounded-xl bg-error'>
+      </Link>
+      <Link href={'/new/expense'} className='w-full text-center py-1 font-bold leading-8 text-black-primary rounded-xl bg-error'>
         Egreso
-      </button>
+      </Link >
     </div>
   )
 }
