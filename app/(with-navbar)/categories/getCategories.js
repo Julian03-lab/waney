@@ -13,7 +13,7 @@ export async function getCategory (userID, categoryID) {
 
 export default async function getCategories (userID) {
   try {
-    const data = collection(db, 'users', userID.value, 'category')
+    const data = collection(db, 'users', userID, 'category')
     const querySnapshot = await getDocs(data)
     if (querySnapshot.empty) {
       return null
@@ -24,6 +24,6 @@ export default async function getCategories (userID) {
       return { id, ...data }
     })
   } catch (error) {
-    console.log(error)
+    console.log('error')
   }
 }

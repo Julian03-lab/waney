@@ -1,9 +1,13 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 'use client'
 
+import getCategories from 'app/(with-navbar)/categories/getCategories'
 import Loader from 'app/components/Loader'
 import useMovement from 'app/components/balance/useMovement'
+import { auth } from 'app/services/firebaseClient'
 import { useRouter } from 'next/navigation'
 import { useEffect, useState } from 'react'
+import { useAuthState } from 'react-firebase-hooks/auth'
 import 'styles/movements.css'
 
 export default function Income () {
@@ -16,9 +20,11 @@ export default function Income () {
     recipient: { value: '', status: undefined },
     type: { value: 'income', status: undefined }
   })
+  const [categories, setCategories] = useState([])
   const [handleSubmit, loading] = useMovement(values)
   const [valid, setValid] = useState(false)
   const router = useRouter()
+  const [user] = useAuthState(auth)
 
   const validate = () => {
     const emptys = Object.values(values).filter((value) => value.value === '')
@@ -29,8 +35,15 @@ export default function Income () {
 
   useEffect(() => {
     validate()
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [values])
+
+  useEffect(() => {
+    getCategories(user?.uid).then((doc) => {
+      setCategories(doc)
+    }).catch(() => {
+      console.log('Updating...')
+    })
+  }, [user])
 
   const handleChanges = (field, value) => {
     if (field === 'amount') {
@@ -77,9 +90,7 @@ export default function Income () {
       <div className='relative w-full'>
         <select name='category' id='category' onChange={(e) => handleChanges(e.target.name, e.target.value)} value={values.category.value} className={`${values.category.value ? 'opacity-100' : 'opacity-50'} pt-6 pb-2 px-2 font-semibold py text-base bg-black-primary border-2 border-primary-100 rounded-xl text-white peer focus:opacity-100 focus:outline-none focus:shadow-primary-100 focus:shadow-glow w-full calendar`}>
           <option value='' disabled>Seleccione una categoría</option>
-          <option value='salary'>Salario</option>
-          <option value='gift'>Regalo</option>
-          <option value='other'>Otro</option>
+          {categories.map(({ name, icon, id }) => <option key={id} value={icon}>{name}</option>)}
         </select>
         <label htmlFor='category' className='opacity-100 absolute text-xs font-bold top-2 left-2 text-primary-100 peer-focus:opacity-100'>Categoría</label>
       </div>

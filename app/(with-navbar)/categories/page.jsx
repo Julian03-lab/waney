@@ -6,7 +6,7 @@ import Link from 'next/link'
 export default async function Categories () {
   const nextCookies = cookies()
   const token = nextCookies.get('userID')
-  const categories = await getCategories(token)
+  const categories = await getCategories(token.value)
 
   return (
     <section className='flex flex-col w-full gap-4 items-center'>
