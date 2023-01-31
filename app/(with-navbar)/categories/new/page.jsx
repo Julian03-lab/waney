@@ -2,16 +2,16 @@
 
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
-import EmojiList from './EmojiList'
 import { auth } from 'app/services/firebaseClient'
-import addCategoryDB from './addCategoryDB'
 import Loader from 'app/components/Loader'
+import addCategoryDB from '../addCategoryDB'
+import EmojiList from '../EmojiList'
 
 export default function NewCategory () {
   const router = useRouter()
   const [category, setCategory] = useState('')
   const [icon, setIcon] = useState('❔')
-  const uid = auth.currentUser.uid
+  const uid = auth.currentUser?.uid
   const [loading, setLoading] = useState(false)
 
   const handleSubmit = (e) => {
@@ -36,7 +36,7 @@ export default function NewCategory () {
   if (loading) { return <Loader /> }
 
   return (
-    <div className='flex flex-col justify-between w-full gap-2'>
+    <div className='flex flex-col justify-between w-full gap-2 mb-8'>
       <button onClick={handleCancel} className='self-start font-bold text-primary-100 text-xl'>&larr; Volver</button>
       <form className='flex flex-col justify-around px-7 py-4 gap-4 border-2 shadow-md border-primary-100 rounded-xl items-center'>
         <div className=' bg-black-secondary rounded-xl text-5xl p-4 shadow'>

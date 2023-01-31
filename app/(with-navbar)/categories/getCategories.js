@@ -1,5 +1,15 @@
 import { db } from 'app/services/firebaseClient'
-import { collection, getDocs } from 'firebase/firestore'
+import { collection, doc, getDoc, getDocs } from 'firebase/firestore'
+
+export async function getCategory (userID, categoryID) {
+  try {
+    const data = doc(db, 'users', userID, 'category', categoryID)
+    const docSnap = await getDoc(data)
+    return docSnap.data()
+  } catch (error) {
+    console.log('')
+  }
+}
 
 export default async function getCategories (userID) {
   try {
