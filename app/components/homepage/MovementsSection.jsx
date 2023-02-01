@@ -12,7 +12,7 @@ export default async function MovementsSection () {
   return (
     <div className='flex flex-col gap-2'>
       <div className='flex justify-between'>
-        <h2 className='text-base font-bold text-white'>Ultimos Movimientos</h2>
+        <h2 className='text-lg font-bold text-white'>Ultimos Movimientos</h2>
         <Link className='text-base font-normal text-primary-100' href='/'>
           Ver Más
         </Link>

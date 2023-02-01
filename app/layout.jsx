@@ -10,7 +10,7 @@ export default function RootLayout ({ children }) {
   return (
     <html>
       <head />
-      <body className={`${nunito.className} h-screen overflow-hidden`}>
+      <body className={`${nunito.className}`}>
         {children}
       </body>
     </html>

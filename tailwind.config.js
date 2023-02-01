@@ -20,9 +20,9 @@ module.exports = {
       white: '#ebecee',
       primary: {
         100: '#45ADFF',
-        200: '#67d8e6',
-        300: '#5bc0cc',
-        400: '#50a8b3'
+        200: '#3e9ce6',
+        300: '#378acc',
+        400: '#3079b3'
       },
       error: '#FB4C4C',
       success: '#6aff45'

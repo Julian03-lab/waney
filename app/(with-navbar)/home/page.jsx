@@ -23,7 +23,7 @@ function MovementsSectionLoader () {
 export default function LandingPage () {
   return (
     <>
-      <div className='flex flex-col gap-5 w-full'>
+      <div className='flex flex-col gap-4 w-full'>
         <BalanceInfo />
         <OptionsList />
       </div>

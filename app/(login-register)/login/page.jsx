@@ -1,5 +1,4 @@
 import BackButton from 'app/components/Login/BackButton'
-import Link from 'next/link'
 import LoginAuth from './LoginAuth'
 
 export default function LoginPage () {

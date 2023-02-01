@@ -7,6 +7,7 @@ import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth'
 import { useAuthState } from 'react-firebase-hooks/auth'
 import { useRouter } from 'next/navigation'
 import { useCookies } from 'react-cookie'
+import { defaultCategories } from 'app/(with-navbar)/categories/addCategoryDB'
 
 export default function RegisterAuth () {
   const [user] = useAuthState(auth)
@@ -44,11 +45,17 @@ export default function RegisterAuth () {
     }
     return await createUserWithEmailAndPassword(auth, email, password)
       .then(() => {
-        updateProfile(auth.currentUser, { displayName })
-          .then(() => {
+        defaultCategories(auth.currentUser.uid).then(() => {
+          updateProfile(auth.currentUser, { displayName }).then(() => {
             setCookie('userID', auth.currentUser.uid, { path: '/' })
             router.push('/home')
+          }).catch(e => {
+            setError(errorList[e.code])
           })
+        }).catch(e => {
+          setError(errorList[e.code])
+        }
+        )
       })
       .catch(e => {
         setError(errorList[e.code])

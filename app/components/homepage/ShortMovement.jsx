@@ -12,7 +12,7 @@ export default function ShortMovement ({ amount, date, category, type, account, 
       </div>
       <div className='flex flex-col items-end justify-center'>
         <h3 className={`${type === 'income' ? 'text-success' : 'text-error'} font-bold`}>
-          {type === 'income' ? '+ $' + amount : '- $' + amount}
+          {type === 'income' ? '+ $' + amount.toLocaleString('es-MX') : '- $' + amount.toLocaleString('es-MX')}
         </h3>
         <p className='text-white font-medium text-sm'>{date.split('-').reverse().join('/')}</p>
       </div>

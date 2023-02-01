@@ -72,11 +72,11 @@ export default function Expense () {
   return (
     <form className='flex flex-col justify-center gap-4 w-full'>
       <div className='relative'>
-        <input type='number' name='amount' id='amount' onChange={(e) => handleChanges(e.target.name, parseInt(e.target.value))} value={values.amount.value} className={`${values.amount.value ? 'opacity-100' : 'opacity-50'} w-full pt-6 pb-2 px-2 font-semibold py text-base bg-black-primary border-2 rounded-xl text-white peer focus:opacity-100 focus:outline-none border-primary-100 focus:shadow-primary-100 focus:shadow-glow`} min={0} max={999999} placeholder='999.999' />
+        <input autoComplete='off' type='number' name='amount' id='amount' onChange={(e) => handleChanges(e.target.name, parseInt(e.target.value))} value={values.amount.value} className={`${values.amount.value ? 'opacity-100' : 'opacity-50'} w-full pt-6 pb-2 px-2 font-semibold py text-base bg-black-primary border-2 rounded-xl text-white peer focus:opacity-100 focus:outline-none border-primary-100 focus:shadow-primary-100 focus:shadow-glow`} min={0} max={999999} placeholder='999,999' />
         <label htmlFor='amount' className='opacity-100 absolute text-xs font-bold top-2 left-2 text-primary-100 peer-focus:opacity-100'>Cantidad</label>
       </div>
       <div className='relative'>
-        <input type='text' name='description' id='description' onChange={(e) => handleChanges(e.target.name, e.target.value)} value={values.description.value} className={`${values.description.value ? 'opacity-100' : 'opacity-50'} pt-6 pb-2 px-2 font-semibold py text-base bg-black-primary border-2 border-primary-100 rounded-xl text-white peer focus:opacity-100 focus:outline-none focus:shadow-primary-100 focus:shadow-glow w-full`} placeholder='Sueldo' />
+        <input autoComplete='off' type='text' name='description' id='description' onChange={(e) => handleChanges(e.target.name, e.target.value)} value={values.description.value} className={`${values.description.value ? 'opacity-100' : 'opacity-50'} pt-6 pb-2 px-2 font-semibold py text-base bg-black-primary border-2 border-primary-100 rounded-xl text-white peer focus:opacity-100 focus:outline-none focus:shadow-primary-100 focus:shadow-glow w-full`} placeholder='Sueldo' />
         <label htmlFor='description' className='opacity-100 absolute text-xs font-bold top-2 left-2 text-primary-100 peer-focus:opacity-100'>Descripción</label>
       </div>
       <div className='relative'>
