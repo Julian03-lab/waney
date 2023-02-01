@@ -4,7 +4,7 @@ import { useState } from 'react'
 import EyeOpen from '../svgs/EyeOpen'
 import EyeClosed from '../svgs/EyeClosed'
 
-export default function Password ({ htmlFor, text, handlePassword, handleConfirm }) {
+export default function Password ({ htmlFor, text, handlePassword, handleConfirm, value }) {
   const [visible, setVisible] = useState(false)
 
   const toggleVisibility = (e) => {
@@ -12,14 +12,15 @@ export default function Password ({ htmlFor, text, handlePassword, handleConfirm
     setVisible(!visible)
   }
   return (
-    <>
-      <label className='text-lg font-extrabold text-white' htmlFor={htmlFor}> {text}</label>
-      <div className='flex items-center bg-primary-400 px-3 py-2 rounded-full w-full justify-center'>
-        <input required autoComplete='on' className='bg-primary-400 font-semibold text-base text-black-primary w-full outline-none placeholder:text-black-primary placeholder:text-opacity-50' type={visible ? 'text' : 'password'} placeholder='********' id={htmlFor} onChange={htmlFor === 'password' ? handlePassword : handleConfirm} />
-        <button onClick={toggleVisibility}>
-          {!visible ? <EyeOpen width='32' height='32' fill='#72F0FF' /> : <EyeClosed width='32' height='32' fill='#72F0FF' />}
-        </button>
+
+    <div className='w-full flex gap-2'>
+      <div className='relative w-full'>
+        <input required autoComplete='on' type={visible ? 'text' : 'password'} className={`${value ? 'opacity-100' : 'opacity-50'} w-full pt-6 pb-2 px-2 font-medium text-base bg-black-primary border-2 rounded-xl text-white peer focus:opacity-100 focus:font-medium autofill:!text-error focus:outline-none border-primary-100 focus:shadow-primary-100 focus:shadow-glow`} placeholder='********' value={value} id={htmlFor} onChange={htmlFor === 'password' ? handlePassword : handleConfirm} />
+        <label className='opacity-100 absolute text-sm font-bold top-2 left-2 text-primary-100' htmlFor={htmlFor}> {text}</label>
       </div>
-    </>
+      <button onClick={toggleVisibility}>
+        {!visible ? <EyeOpen width='32' height='32' fill='#45ADFF' /> : <EyeClosed width='32' height='32' fill='#45ADFF' />}
+      </button>
+    </div>
   )
 }

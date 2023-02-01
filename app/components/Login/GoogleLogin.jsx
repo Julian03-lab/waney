@@ -1,7 +1,7 @@
 'use client'
 
 import { auth } from 'app/services/firebaseClient'
-import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth'
+import { GoogleAuthProvider, signInWithRedirect } from 'firebase/auth'
 import { useRouter } from 'next/navigation'
 import { useAuthState } from 'react-firebase-hooks/auth'
 import { Button } from './LoginButtons'
@@ -9,7 +9,7 @@ import GoogleLogo from 'app/components/svgs/GoogleLogo'
 import { useEffect } from 'react'
 import { useCookies } from 'react-cookie'
 
-export default function GoogleLogin () {
+export default function GoogleLogin ({ disabled }) {
   const googleAuth = new GoogleAuthProvider()
   const [user] = useAuthState(auth)
   const router = useRouter()
@@ -24,15 +24,17 @@ export default function GoogleLogin () {
   }, [user])
 
   const googleLogin = async () => {
-    return await signInWithPopup(auth, googleAuth)
+    return await signInWithRedirect(auth, googleAuth)
       .then(() => {
         setCookie('userID', auth.currentUser.uid, { path: '/' })
         router.push('/home')
       })
-      .catch(e => console.log(e))
+      .catch(e => {
+        console.log(e)
+      })
   }
 
   return (
-    <Button action={googleLogin} text='Iniciar sesión con Google' icon={<GoogleLogo width={20} height={20} />} buttonstyle='bg-primary-100 font-extrabold text-[14px] text-black-primary' />
+    <Button action={googleLogin} text='Iniciar sesión con Google' icon={<GoogleLogo width={20} height={20} />} buttonstyle='bg-primary-100 font-extrabold text-base text-black-primary' disabled={disabled} />
   )
 }

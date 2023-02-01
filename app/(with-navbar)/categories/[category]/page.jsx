@@ -25,6 +25,7 @@ export default function NewCategory ({ params }) {
       setIcon(doc.icon)
       setLoading(false)
     }).catch(() => {
+      router.back()
       console.log('Updating...')
     })
   }, [user])
@@ -52,7 +53,7 @@ export default function NewCategory ({ params }) {
     e.preventDefault()
     setLoading(true)
     deleteCategoryDB(params.category, user?.uid).then(() => {
-      router.replace('/categories')
+      router.push('/categories')
     }
     )
   }

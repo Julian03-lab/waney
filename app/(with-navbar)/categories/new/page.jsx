@@ -18,14 +18,14 @@ export default function NewCategory () {
     e.preventDefault()
     setLoading(true)
     addCategoryDB(category, icon, uid).then(() => {
-      router.replace('/categories')
+      router.push('/categories')
     }
     )
   }
 
   const handleCancel = (e) => {
     e.preventDefault()
-    router.replace('/categories')
+    router.push('/categories')
   }
 
   const handleIcon = (e) => {

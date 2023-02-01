@@ -12,7 +12,7 @@ const Logo = (props) => (
       d='M24.49 0h205.343s16.51 5.278 21.573 22.354v193.204s-1.407 16.2-21.573 23.153c-21.863.6-208.539 0-208.539 0S5.764 236.135-.013 214.76V22.353S6.041 2.753 24.49 0Z'
       style={{
         fillRule: 'evenodd',
-        fill: '#72F0FF'
+        fill: '#45ADFF'
       }}
     />
     <path
@@ -30,7 +30,7 @@ const Logo = (props) => (
         textAnchor: 'middle',
         fontFamily: '&quot',
         fontWeight: 700,
-        fill: '#72F0FF'
+        fill: '#45ADFF'
       }}
     >
       <tspan x={0}>WANEY</tspan>

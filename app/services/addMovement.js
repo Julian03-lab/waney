@@ -1,7 +1,7 @@
 import { db } from 'app/services/firebaseClient'
 import { Timestamp, addDoc, collection } from 'firebase/firestore'
 
-export default function addMovement (amount, description, date, uid, category, type, account, recipient) {
+export default function addMovement (amount, description, date, uid, category, type, account) {
   const data = {
     amount,
     description,
@@ -9,7 +9,6 @@ export default function addMovement (amount, description, date, uid, category, t
     category,
     type,
     account,
-    recipient,
     uid,
     createdAt: Timestamp.fromDate(new Date())
   }

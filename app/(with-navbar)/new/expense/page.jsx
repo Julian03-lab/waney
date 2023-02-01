@@ -17,7 +17,7 @@ export default function Expense () {
     date: { value: '', status: undefined },
     category: { value: '', status: undefined },
     account: { value: '', status: undefined },
-    type: { value: 'income', status: undefined }
+    type: { value: 'expense', status: undefined }
   })
   const [categories, setCategories] = useState([])
   const [handleSubmit, loading] = useMovement(values)
@@ -37,6 +37,7 @@ export default function Expense () {
   }, [values])
 
   useEffect(() => {
+    console.log('user', user)
     getCategories(user?.uid).then((doc) => {
       setCategories(doc)
     }).catch(() => {

@@ -14,7 +14,7 @@ export default async function Categories () {
       <article className='grid grid-cols-3 overflow-y-auto grid-rows-5 gap-2 w-full max-h-[548px]'>
         {(!categories || categories.length < 15) && <AddCategory href='/categories/new' />}
         {categories && categories.map((category) => (
-          <Link href={{ pathname: `categories/${category.id}` }} key={category.id} className='flex flex-col items-center justify-center py-2 bg-black-secondary rounded-xl hover:border hover:border-primary-100 border border-black-primary'>
+          <Link href={categories.length > 1 ? `categories/${category.id}` : '/categories'} key={category.id} className='flex flex-col items-center justify-center py-2 bg-black-secondary rounded-xl hover:border hover:border-primary-100 border border-black-primary'>
             <div className='text-4xl'>
               {category.icon}
             </div>
@@ -22,6 +22,7 @@ export default async function Categories () {
           </Link>
         ))}
       </article>
+      {categories.length < 2 && <h3 className='text-error font-extralight opacity-75 self-start'>* Necesitas tener al menos una categoria</h3>}
     </section>
   )
 }

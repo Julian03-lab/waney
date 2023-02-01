@@ -22,7 +22,6 @@ export default async function getMovements (userID) {
     }
     return querySnapshot.docs.map(doc => {
       const data = doc.data()
-      console.log(data)
       const id = doc.id
       return { id, ...data }
     })

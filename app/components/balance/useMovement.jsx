@@ -6,7 +6,7 @@ import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 import { useAuthState } from 'react-firebase-hooks/auth'
 
-export default function useMovement ({ amount, description, date, category, type, account, recipient }) {
+export default function useMovement ({ amount, description, date, category, type, account }) {
   const [user] = useAuthState(auth)
   const router = useRouter()
   const [loading, setLoading] = useState(false)
@@ -15,7 +15,7 @@ export default function useMovement ({ amount, description, date, category, type
     e.preventDefault()
     setLoading(true)
 
-    addMovement(amount.value, description.value, date.value, user.uid, category.value, type.value, account.value, recipient.value)
+    addMovement(amount.value, description.value, date.value, user.uid, category.value, type.value, account.value)
       .then(() => router.replace('/home'))
       .catch(err => console.log(err))
   }
