@@ -37,7 +37,7 @@ export default function Logout () {
       {
       user
         ? (
-          <div id='body' className='h-screen flex flex-col justify-center ' onClick={(e) => e.target.id === 'body' ? router.replace('/home') : null}>
+          <div id='body' className=' flex flex-col justify-center ' onClick={(e) => e.target.id === 'body' ? router.replace('/home') : null}>
             <div className='flex flex-col rounded-xl items-center bg-black-secondary shadow-md py-10 px-6 gap-6'>
               <Isologo width='72' height='72' />
               <h1 className='text-white font-bold text-xl text-center'>¿Quieres cerrar tu sesion de Waney?</h1>

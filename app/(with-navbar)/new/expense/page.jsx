@@ -1,6 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 'use client'
 
+import { getAllAccounts } from 'app/(with-navbar)/accounts/getAccounts'
 import getCategories from 'app/(with-navbar)/categories/getCategories'
 import Loader from 'app/components/Loader'
 import useMovement from 'app/components/balance/useMovement'
@@ -20,6 +21,7 @@ export default function Expense () {
     type: { value: 'expense', status: undefined }
   })
   const [categories, setCategories] = useState([])
+  const [accounts, setAccounts] = useState([])
   const [handleSubmit, loading] = useMovement(values)
   const [valid, setValid] = useState(false)
   const router = useRouter()
@@ -37,9 +39,13 @@ export default function Expense () {
   }, [values])
 
   useEffect(() => {
-    console.log('user', user)
     getCategories(user?.uid).then((doc) => {
       setCategories(doc)
+    }).catch(() => {
+      console.log('Updating...')
+    })
+    getAllAccounts(user?.uid).then((doc) => {
+      setAccounts(doc)
     }).catch(() => {
       console.log('Updating...')
     })
@@ -93,9 +99,7 @@ export default function Expense () {
       <div className='relative w-full'>
         <select name='account' id='account' onChange={(e) => handleChanges(e.target.name, e.target.value)} value={values.account.value} className={`${values.account.value ? 'opacity-100' : 'opacity-50'} pt-6 pb-2 px-2 font-semibold py text-base bg-black-primary border-2 border-primary-100 rounded-xl text-white peer focus:opacity-100 focus:outline-none focus:shadow-primary-100 focus:shadow-glow w-full calendar`}>
           <option value='' disabled>Seleccione una cuenta</option>
-          <option value='MercadoPago'>MercadoPago</option>
-          <option value='LemonCash'>LemonCash</option>
-          <option value='other'>Otro</option>
+          {accounts.map(({ accountName, id }) => <option key={id} value={accountName}>{accountName}</option>)}
         </select>
         <label htmlFor='account' className='opacity-100 absolute text-xs font-bold top-2 left-2 text-primary-100 peer-focus:opacity-100'>Cuenta</label>
       </div>

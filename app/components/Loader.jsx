@@ -10,7 +10,7 @@ export default function Loader () {
       <Isologo width={200} height={200} />
       <h1 className={`${okine.className} text-6xl text-primary-100`}>WANEY</h1>
       <Oval
-        color='#72F0FF' secondaryColor='#50a8b3' height={56} width={56}
+        color='#45ADFF' secondaryColor='#50a8b3' height={56} width={56}
       />
     </div>
 

@@ -2,6 +2,9 @@
 
 import Link from 'next/link'
 import GoogleLogin from './GoogleLogin'
+import { useAuthState } from 'react-firebase-hooks/auth'
+import { auth } from 'app/services/firebaseClient'
+import { ThreeDots } from 'react-loader-spinner'
 
 export function Button ({ action, text, icon, buttonstyle, disabled }) {
   return (
@@ -14,6 +17,17 @@ export function Button ({ action, text, icon, buttonstyle, disabled }) {
 }
 
 export default function LoginButtons () {
+  const [user, loading] = useAuthState(auth)
+
+  if (loading) {
+    return (
+      <div className='flex flex-col justify-center items-center w-full'>
+        <p className='text-xl font-semibold text-primary-100'>{user ? 'Iniciando sesión' : 'Revisando nuestros sistemas'}</p>
+        <ThreeDots width={48} height={48} color='#45ADFF' />
+      </div>
+    )
+  }
+
   return (
     <div className='flex flex-col justify-center items-center gap-3 w-full'>
       <Link href='/login' className='w-full py-[6px] px-[12px] rounded-xl leading-8 bg-primary-100 font-bold text-[20px] text-black-primary text-center'>

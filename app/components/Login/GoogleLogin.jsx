@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 'use client'
 
 import { auth } from 'app/services/firebaseClient'
@@ -20,6 +21,7 @@ export default function GoogleLogin ({ disabled }) {
   useEffect(() => {
     (async () => {
       const result = await getRedirectResult(auth)
+      console.log(result)
       if (result) {
         if (getAdditionalUserInfo(result).isNewUser) {
           defaultCategories(auth.currentUser.uid)
@@ -28,8 +30,11 @@ export default function GoogleLogin ({ disabled }) {
         router.push('/home')
       }
     })()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+
+    if (user) {
+      router.push('/home')
+    }
+  }, [user])
 
   const googleLogin = () => {
     signInWithRedirect(auth, googleAuth)
