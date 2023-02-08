@@ -1,6 +1,6 @@
 export default function ShortMovement ({ amount, date, category, type, account, description }) {
   return (
-    <li className='flex justify-between py-2 px-3 bg-black-secondary rounded-xl shadow-md'>
+    <li className='flex justify-between py-2 px-3 bg-black-secondary rounded-xl shadow-md hover:cursor-pointer'>
       <div className='flex items-center gap-3'>
         <i className=' text-3xl rounded-lg not-italic'>
           {category}

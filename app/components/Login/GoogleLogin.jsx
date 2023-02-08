@@ -21,7 +21,6 @@ export default function GoogleLogin ({ disabled }) {
   useEffect(() => {
     (async () => {
       const result = await getRedirectResult(auth)
-      console.log(result)
       if (result) {
         if (getAdditionalUserInfo(result).isNewUser) {
           defaultCategories(auth.currentUser.uid)

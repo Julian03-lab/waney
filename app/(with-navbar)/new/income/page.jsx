@@ -11,7 +11,7 @@ import { useEffect, useState } from 'react'
 import { useAuthState } from 'react-firebase-hooks/auth'
 import 'styles/movements.css'
 
-export default function Expense () {
+export default function Income () {
   const [values, setValues] = useState({
     amount: { value: '', status: undefined },
     description: { value: '', status: undefined },
@@ -26,6 +26,7 @@ export default function Expense () {
   const [valid, setValid] = useState(false)
   const router = useRouter()
   const [user] = useAuthState(auth)
+  const todayDate = new Date().toISOString().split('T')[0]
 
   const validate = () => {
     const emptys = Object.values(values).filter((value) => value.value === '')
@@ -70,10 +71,10 @@ export default function Expense () {
 
   const handleCancel = (e) => {
     e.preventDefault()
-    router.replace('/home')
+    router.back()
   }
 
-  if (loading || !accounts || !categories) { return <Loader /> }
+  if (loading || !categories) { return <Loader /> }
 
   return (
     <form className='flex flex-col justify-center gap-4 w-full'>
@@ -86,7 +87,7 @@ export default function Expense () {
         <label htmlFor='description' className='opacity-100 absolute text-xs font-bold top-2 left-2 text-primary-100 peer-focus:opacity-100'>Descripción</label>
       </div>
       <div className='relative'>
-        <input type='date' name='date' id='date' onChange={(e) => handleChanges(e.target.name, e.target.value)} value={values.date.value} className={`${values.date.value ? 'opacity-100' : 'opacity-50'} pt-6 pb-2 px-2 font-semibold py text-base bg-black-primary border-2 border-primary-100 rounded-xl text-white peer focus:opacity-100 focus:outline-none focus:shadow-primary-100 focus:shadow-glow w-full calendar`} placeholder='01/01/23' />
+        <input type='date' name='date' max={todayDate} id='date' onChange={(e) => handleChanges(e.target.name, e.target.value)} value={values.date.value} className={`${values.date.value ? 'opacity-100' : 'opacity-50'} pt-6 pb-2 px-2 font-semibold py text-base bg-black-primary border-2 border-primary-100 rounded-xl text-white peer focus:opacity-100 focus:outline-none focus:shadow-primary-100 focus:shadow-glow w-full calendar`} placeholder='01/01/23' />
         <label htmlFor='date' className='opacity-100 absolute text-xs font-bold top-2 left-2 text-primary-100 peer-focus:opacity-100'>Fecha del movimiento</label>
       </div>
       <div className='relative w-full'>
@@ -97,10 +98,19 @@ export default function Expense () {
         <label htmlFor='category' className='opacity-100 absolute text-xs font-bold top-2 left-2 text-primary-100 peer-focus:opacity-100'>Categoría</label>
       </div>
       <div className='relative w-full'>
-        <select name='account' id='account' onChange={(e) => handleChanges(e.target.name, e.target.value)} value={values.account.value} className={`${values.account.value ? 'opacity-100' : 'opacity-50'} pt-6 pb-2 px-2 font-semibold py text-base bg-black-primary border-2 border-primary-100 rounded-xl text-white peer focus:opacity-100 focus:outline-none focus:shadow-primary-100 focus:shadow-glow w-full calendar`}>
-          <option value='' disabled>Seleccione una cuenta</option>
-          {accounts.map(({ accountName, id }) => <option key={id} value={accountName}>{accountName}</option>)}
-        </select>
+        {accounts
+          ? (
+            <select name='account' id='account' onChange={(e) => handleChanges(e.target.name, e.target.value)} value={values.account.value} className={`${values.account.value ? 'opacity-100' : 'opacity-50'} pt-6 pb-2 px-2 font-semibold py text-base bg-black-primary border-2 border-primary-100 rounded-xl text-white peer focus:opacity-100 focus:outline-none focus:shadow-primary-100 focus:shadow-glow w-full calendar`}>
+              <option value='' disabled>Seleccione una cuenta</option>
+              {accounts.map(({ accountName, id }) => <option key={id} value={accountName}>{accountName}</option>)}
+            </select>
+            )
+          : (
+            <select name='account' id='account' onChange={(e) => router.push('/accounts')} value={values.account.value} className={`${values.account.value ? 'opacity-100' : 'opacity-50'} pt-6 pb-2 px-2 font-semibold py text-base bg-black-primary border-2 border-primary-100 rounded-xl text-white peer focus:opacity-100 focus:outline-none focus:shadow-primary-100 focus:shadow-glow w-full calendar`}>
+              <option value='' disabled>Seleccione una cuenta</option>
+              <option value=''>Agregar una cuenta</option>
+            </select>
+            )}
         <label htmlFor='account' className='opacity-100 absolute text-xs font-bold top-2 left-2 text-primary-100 peer-focus:opacity-100'>Cuenta</label>
       </div>
       <button disabled={!valid} type='submit' className='py-2 px-3 rounded-xl disabled:opacity-40 bg-primary-100 font-bold text-xl text-black-primary leading-8' onClick={(e) => handleSubmit(e)}>Agregar movimiento</button>

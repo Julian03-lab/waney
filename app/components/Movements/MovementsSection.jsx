@@ -2,18 +2,15 @@
 import Link from 'next/link'
 import ShortMovement from './ShortMovement'
 import getMovements from 'app/services/getMovements'
-import { cookies } from 'next/headers'
 
-export default async function MovementsSection () {
-  const nextCookies = cookies()
-  const token = nextCookies.get('userID')
+export default async function MovementsSection ({ token }) {
   const movements = await getMovements(token)
 
   return (
     <div className='flex flex-col gap-2'>
       <div className='flex justify-between'>
         <h2 className='text-lg font-bold text-white'>Ultimos Movimientos</h2>
-        <Link className='text-base font-normal text-primary-100' href='/'>
+        <Link className='text-base font-normal text-primary-100' href='/movements'>
           Ver Más
         </Link>
       </div>
