@@ -39,7 +39,7 @@ export default function BottomNav () {
   const [activeRoute, setActiveRoute] = useState('Home')
 
   return (
-    <footer className='w-full fixed bottom-0'>
+    <footer className='w-full fixed bottom-0 lg:hidden'>
       <ul className=' flex flex-row justify-between items-center px-9 py-3 bg-black-primary border-t-2 border-t-primary-100'>
         {links.map(({ route, label }) => (
           <li key={route}>

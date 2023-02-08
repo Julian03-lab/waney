@@ -8,11 +8,9 @@ const nunito = Nunito({
 
 export default function RootLayout ({ children }) {
   return (
-    <html>
+    <html className={`${nunito.className}`}>
       <head />
-      <body className={`${nunito.className}`}>
-        {children}
-      </body>
+      {children}
     </html>
   )
 }

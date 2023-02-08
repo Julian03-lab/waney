@@ -1,11 +1,11 @@
 'use client'
 
 import { useState } from 'react'
-import Link from 'next/link'
-import NavBarItem from './NavBarItem'
-import Bars from '../svgs/Bars'
-import UserIcon from '../svgs/UserIcon'
-import Isologo from '../svgs/Isologo'
+import { auth } from 'app/services/firebaseClient'
+import { usePathname } from 'next/navigation'
+import Aside from './Aside'
+import { useAuthState } from 'react-firebase-hooks/auth'
+import Logo from '../svgs/Logo'
 
 export const links = [
   { route: '/home', label: 'Home' },
@@ -15,29 +15,21 @@ export const links = [
 ]
 
 export default function NavBar () {
-  const [dropdownActive, setDropdownActive] = useState(false)
-  const [activeRoute, setActiveRoute] = useState('Home')
-
-  const toggleDropdown = () => {
-    setDropdownActive(!dropdownActive)
-  }
+  const [open, setOpen] = useState(false)
+  const [user] = useAuthState(auth)
+  const path = usePathname()
 
   return (
-    <nav className='flex flex-col w-full fixed top-0'>
-      <div className='flex justify-between items-center py-4 px-9 bg-black-secondary shadow-md'>
-        <button
-          onClick={toggleDropdown}
-          className='text-primary hidden'
-          type='button'
-        >
-          <Bars width={24} height={24} className='fill-primary-100 hover:fill-primary-100' />
-        </button>
-        <Link href='/profile' onClick={() => setActiveRoute('')}>
-          <UserIcon width={32} height={32} className='fill-primary-100 hover:fill-primary-300' />
-        </Link>
-        <Isologo width='32' height='32' />
-      </div>
-      {dropdownActive && <NavBarItem links={links} activeRoute={activeRoute} setActiveRoute={setActiveRoute} />}
-    </nav>
+    <>
+      <nav className='flex flex-col w-full fixed top-0 lg:hidden z-20'>
+        <div className='flex justify-between items-center py-4 px-9 bg-black-secondary'>
+          <Logo width='96' height='32' />
+          <button onClick={() => setOpen(!open)} className='text-3xl font-medium text-white cursor-pointer self-end lg:hidden'>
+            <i className={`bi bi-${open ? 'x' : 'list'}`} />
+          </button>
+        </div>
+      </nav>
+      <Aside user={user} path={path} open={open} />
+    </>
   )
 }
