@@ -74,7 +74,7 @@ export default function Expense () {
     router.back()
   }
 
-  if (!loading && categories) { return <Loader /> }
+  if (loading || !categories) { return <Loader /> }
 
   return (
     <>

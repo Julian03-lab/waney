@@ -12,6 +12,9 @@ export async function getCategory (userID, categoryID) {
 }
 
 export default async function getCategories (userID) {
+  if (!userID) {
+    return null
+  }
   try {
     const data = collection(db, 'users', userID, 'category')
     const querySnapshot = await getDocs(data)

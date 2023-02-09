@@ -1,10 +1,8 @@
 export default function Modal ({ children }) {
   return (
-    <div className='fixed inset-0 z-50 overflow-y-auto'>
-      <div className='relative w-full h-full flex items-center justify-center'>
-        <div className='relative w-full max-w-sm mx-auto bg-white rounded-lg overflow-hidden shadow-md'>
-          {children}
-        </div>
+    <div className='absolute top-0 left-0 w-full h-full backdrop-blur-sm bg-black-primary bg-opacity-50 z-10 flex'>
+      <div className='flex flex-col justify-center items-center w-full h-full'>
+        {children}
       </div>
     </div>
   )

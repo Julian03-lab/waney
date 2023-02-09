@@ -22,7 +22,7 @@ function MovementsSectionLoader () {
   )
 }
 
-export default function LandingPage () {
+export default async function LandingPage () {
   const nextCookies = cookies()
   const token = nextCookies.get('userID')
 
@@ -43,9 +43,9 @@ export default function LandingPage () {
               <Suspense fallback={<MovementsSectionLoader />}>
                 <MovementsSection token={token} />
               </Suspense>
-
             </div>
             <MovementsButtons />
+
           </>
           )}
 
