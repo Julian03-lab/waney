@@ -7,13 +7,6 @@ import Aside from './Aside'
 import { useAuthState } from 'react-firebase-hooks/auth'
 import Logo from '../svgs/Logo'
 
-export const links = [
-  { route: '/home', label: 'Home' },
-  { route: '/movements', label: 'Movements' },
-  { route: '/accounts', label: 'Accounts' },
-  { route: '/settings', label: 'Settings' }
-]
-
 export default function NavBar () {
   const [open, setOpen] = useState(false)
   const [user] = useAuthState(auth)
@@ -29,7 +22,7 @@ export default function NavBar () {
           </button>
         </div>
       </nav>
-      <Aside user={user} path={path} open={open} />
+      <Aside user={user} path={path} open={open} setOpen={setOpen} />
     </>
   )
 }
