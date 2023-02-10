@@ -26,7 +26,7 @@ export default function Logout () {
 
   useEffect(() => {
     if (!user && !loading) {
-      router.push('/login')
+      router.push('/')
     }
 
   // eslint-disable-next-line react-hooks/exhaustive-deps

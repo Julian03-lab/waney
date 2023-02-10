@@ -6,10 +6,10 @@ import NewAccountButton from './NewAccount'
 function Account ({ accountName, amount, inicialAmount }) {
   return (
     <li className='rounded-xl flex items-center justify-between py-3 px-4 gap-2 shadow bg-gradient-to-br from-primary-100 via-primary-200 to-primary-300'>
-      <p className='font-bold text-xl text-black-primary'>{accountName}</p>
+      <p className='font-bold text-lg text-black-primary max-w-[120px] truncate'>{accountName}</p>
       <div className='flex gap-1 items-center'>
-        <p className=' font-extrabold text-2xl'>{amount !== undefined ? amount.toLocaleString('es-MX') + '.0' : inicialAmount.toLocaleString('es-MX') + '.0'}</p>
-        <p className='font-extrabold text-sm uppercase'>ars</p>
+        <p className=' font-extrabold text-xl'>{amount !== undefined ? amount.toLocaleString('es-MX') + '.0' : inicialAmount.toLocaleString('es-MX') + '.0'}</p>
+        <p className='font-extrabold text-xs uppercase'>ars</p>
       </div>
     </li>
   )

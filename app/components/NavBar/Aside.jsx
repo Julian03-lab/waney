@@ -1,10 +1,11 @@
+import Image from 'next/image'
 import Logo from '../svgs/Logo'
 import Link from 'next/link'
 
 function Tab ({ icon, name, href, path, setOpen }) {
   return (
     <Link onClick={() => setOpen(false)} href={href} className={`flex items-center pl-4 pr-7 py-3 rounded-xl hover:bg-primary-200 gap-3 text-lg lg:text-xl font-medium text-white cursor-pointer ${path === href ? 'bg-primary-100 font-bold' : ''}`}>
-      <i className={`bi bi-${icon}`} />
+      <i className={`bi bi-${icon}${path === href ? '-fill' : ''}`} />
       <span>{name}</span>
     </Link>
   )
@@ -12,8 +13,8 @@ function Tab ({ icon, name, href, path, setOpen }) {
 
 const tabs = [
   { icon: 'house-door', name: 'Inicio', href: '/home' },
-  { icon: 'stickies', name: 'Movimientos', href: '/movements' },
-  { icon: 'wallet', name: 'Cuentas', href: '/accounts' },
+  { icon: 'signpost-split', name: 'Movimientos', href: '/movements' },
+  { icon: 'collection', name: 'Cuentas', href: '/accounts' },
   { icon: 'tag', name: 'Categorias', href: '/categories' },
   { icon: 'award', name: 'Metas', href: '/goals' },
   { icon: 'calendar', name: 'Calendario', href: '/calendar' },
@@ -36,7 +37,7 @@ export default function Aside ({ user, path, open, setOpen }) {
         </div>
         {user && (
           <div className='flex gap-2 text-lg lg:text-xl text-white font-medium items-center'>
-            <div className='font-extrabold text-2xl py-1 px-4 rounded-full bg-primary-100 text-black-primary'>{user.displayName[0]}</div>
+            <Image src={user.photoURL} width='40' height='40' className='rounded-full' alt={user.displayName} />
             <p>Hola <strong className='font-bold'>{user.displayName}</strong></p>
           </div>
         )}

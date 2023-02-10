@@ -6,7 +6,8 @@ module.exports = {
   theme: {
     extend: {
       boxShadow: {
-        glow: '0 0 6px #45ADFF'
+        glow: '0 0 6px #45ADFF',
+        button: '3px 3px #ebecee'
       }
     },
     fontFamily: {

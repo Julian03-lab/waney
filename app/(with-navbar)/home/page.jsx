@@ -1,10 +1,9 @@
 import BalanceInfo from 'app/components/homepage/BalanceInfo'
 import MovementsButtons from 'app/components/homepage/MovementsButtons'
 import MovementsSection from 'app/components/Movements/MovementsSection'
-import OptionsList from 'app/components/homepage/OptionsList'
 import { Suspense } from 'react'
 import { cookies } from 'next/headers'
-import VerifyUser from 'app/components/VerifyUser'
+import OptionButton from 'app/components/homepage/OptionButton'
 
 function MovementsSectionLoader () {
   return (
@@ -25,30 +24,19 @@ function MovementsSectionLoader () {
 export default async function LandingPage () {
   const nextCookies = cookies()
   const token = nextCookies.get('userID')
-
   return (
     <>
-      {token === undefined
-        ? (
-          <VerifyUser />
-          )
-        : (
-          <>
-            <div className='flex flex-col gap-4 w-full'>
-              <BalanceInfo token={token} />
-              <OptionsList />
-            </div>
-            <hr className='border border-primary-100 w-full' />
-            <div className='flex flex-col gap-6 w-full'>
-              <Suspense fallback={<MovementsSectionLoader />}>
-                <MovementsSection token={token} />
-              </Suspense>
-            </div>
-            <MovementsButtons />
-
-          </>
-          )}
-
+      <div className='flex flex-col gap-2 w-full'>
+        <BalanceInfo token={token} />
+        <OptionButton href='accounts' icon='collection' text='Cuentas' optionStyle='px-3 py-2 w-full' />
+      </div>
+      <hr className='border border-primary-100 w-full' />
+      <div className='flex flex-col gap-6 w-full'>
+        <Suspense fallback={<MovementsSectionLoader />}>
+          <MovementsSection token={token} />
+        </Suspense>
+      </div>
+      <MovementsButtons />
     </>
   )
 }

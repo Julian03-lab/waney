@@ -1,5 +1,5 @@
 import { db } from 'app/services/firebaseClient'
-import { addDoc, collection, doc, setDoc, writeBatch } from 'firebase/firestore'
+import { addDoc, collection, doc, getDocs, setDoc, writeBatch } from 'firebase/firestore'
 
 export function updateCategoryDB (name, icon, uid, categoryID) {
   const data = {
@@ -13,13 +13,21 @@ export function updateCategoryDB (name, icon, uid, categoryID) {
 }
 
 export async function defaultCategories (uid) {
-  const batch = writeBatch(db)
+  const data = collection(db, 'users', uid, 'category')
+  try {
+    const querySnapshot = await getDocs(data)
+    if (querySnapshot.empty) {
+      const batch = writeBatch(db)
 
-  batch.set(doc(db, 'users', uid, 'category', 'salary'), { name: 'Salario', icon: '💵' })
-  batch.set(doc(db, 'users', uid, 'category', 'gift'), { name: 'Regalo', icon: '🎁' })
-  batch.set(doc(db, 'users', uid, 'category', 'other'), { name: 'Otros', icon: '📦' })
+      batch.set(doc(db, 'users', uid, 'category', 'salary'), { name: 'Salario', icon: '💵' })
+      batch.set(doc(db, 'users', uid, 'category', 'gift'), { name: 'Regalo', icon: '🎁' })
+      batch.set(doc(db, 'users', uid, 'category', 'other'), { name: 'Otros', icon: '📦' })
 
-  return await batch.commit()
+      return await batch.commit()
+    }
+  } catch {
+    console.log('error')
+  }
 }
 
 export default function addCategoryDB (name, icon, uid) {

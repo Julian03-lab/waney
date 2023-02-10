@@ -40,6 +40,7 @@ export default function Income () {
   }, [values])
 
   useEffect(() => {
+    console.log(user.emailVerified)
     getCategories(user?.uid).then((doc) => {
       setCategories(doc)
     }).catch(() => {

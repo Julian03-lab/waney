@@ -36,13 +36,13 @@ export default function useMovement ({ amount, description, date, category, type
     }
   }, [user, account])
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault()
     setLoading(true)
     addMovement(amount.value, description.value, date.value, user.uid, category.value, type.value, account.value)
       .then(() => getAccountMovements(user.uid, account.value)
         .then((result) => updateDoc(doc(db, 'users', user.uid, 'accounts', account.value.toLowerCase()), { amount: accountAmount + countTotal(result) })))
-      .then(() => router.back())
+      .then(() => router.replace('/home'))
       .catch(err => console.log(err))
   }
 
