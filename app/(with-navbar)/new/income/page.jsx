@@ -40,7 +40,6 @@ export default function Income () {
   }, [values])
 
   useEffect(() => {
-    console.log(user.emailVerified)
     getCategories(user?.uid).then((doc) => {
       setCategories(doc)
     }).catch(() => {
@@ -103,7 +102,7 @@ export default function Income () {
           ? (
             <select name='account' id='account' onChange={(e) => handleChanges(e.target.name, e.target.value)} value={values.account.value} className={`${values.account.value ? 'opacity-100' : 'opacity-50'} pt-6 pb-2 px-2 font-semibold py text-base bg-black-primary border-2 border-primary-100 rounded-xl text-white peer focus:opacity-100 focus:outline-none focus:shadow-primary-100 focus:shadow-glow w-full calendar`}>
               <option value='' disabled>Seleccione una cuenta</option>
-              {accounts.map(({ accountName, id }) => <option key={id} value={accountName}>{accountName}</option>)}
+              {accounts.map(({ accountName, inicialAmount, amount, id }) => <option key={id} value={accountName}>{accountName} - {amount || amount === 0 ? (amount === 0 ? '0' : amount) : inicialAmount} ARS</option>)}
             </select>
             )
           : (

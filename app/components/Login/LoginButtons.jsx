@@ -12,7 +12,7 @@ import { defaultCategories } from 'app/(with-navbar)/categories/addCategoryDB'
 
 export function Button ({ action, text, icon, disabled }) {
   return (
-    <button disabled={disabled} className='box-s font-bold lg:text-2xl text-xl text-white py-2 px-2 flex flex-row gap-2 rounded-xl justify-evenly items-center bg-gradient-to-br from-primary-100 via-primary-200 to-primary-300 shadow-button active:shadow-none active:translate-x-1 active:translate-y-1 border-2 border-white w-full' onClick={action}>
+    <button disabled={disabled} className='font-bold lg:text-2xl text-lg text-white py-2 px-2 flex flex-row gap-2 rounded-xl justify-evenly items-center bg-black-primary shadow-button active:shadow-none active:translate-x-1 active:translate-y-1 border-2 border-primary-100 w-full' onClick={action}>
       {icon && <div className='p-1 bg-white rounded-full'>{icon}</div>}
       {text}
     </button>

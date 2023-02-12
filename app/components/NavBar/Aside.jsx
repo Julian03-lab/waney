@@ -26,7 +26,7 @@ const tabs = [
 export default function Aside ({ user, path, open, setOpen }) {
   return (
     <>
-      <aside className={`flex flex-col pt-4 pb-10 lg:py-10 px-8 items-start justify-evenly h-screen bg-black-secondary lg:bg-black-primary lg:justify-between z-10 gap-2 fixed right-0 ${open ? 'visible' : 'hidden'} lg:flex lg:static w-full max-w-xs`}>
+      <aside className={`overflow-y-auto lg:h-screen flex flex-col lg:py-10 px-8 items-start justify-between pt-20 pb-8 h-full bg-black-secondary lg:bg-black-primary lg:justify-between z-10 gap-2 fixed right-0 ${open ? 'visible' : 'hidden'} lg:flex lg:static w-full max-w-xs`}>
         <div className='flex flex-col gap-2 py-4'>
           <div className='hidden lg:flex justify-between lg:mb-6'>
             <Logo height='34' width='132' />

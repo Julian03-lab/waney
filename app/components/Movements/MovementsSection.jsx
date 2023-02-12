@@ -14,7 +14,7 @@ export default async function MovementsSection ({ token }) {
           Ver Más
         </Link>
       </div>
-      <ul className='flex flex-col gap-1 h-64 overflow-y-auto'>
+      <ul className='flex flex-col gap-1 h-64 lg:h-96 overflow-y-auto'>
         {movements
           ? movements.map(({ amount, date, category, type, account, description, id }) => (
             <ShortMovement key={id} amount={amount} date={date} category={category} type={type} account={account} description={description} />
