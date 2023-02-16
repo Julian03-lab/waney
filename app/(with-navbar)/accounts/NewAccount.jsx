@@ -86,8 +86,8 @@ export default function NewAccountButton () {
 
   return (
     <>
-      <li className='rounded-xl py-3 px-4 gap-2 shadow-lg border-dotted border-[3px] border-black-secondary text-primary-100 hover:border-primary-100 cursor-pointer bg-black-secondary mb-1' onClick={handleCreate}>
-        <p className='text-center font-medium text-2xl'>Agregar cuenta</p>
+      <li className='mb-1'>
+        <button className='font-semibold text-2xl text-primary-100 py-2 px-2 flex flex-row gap-2 rounded-xl justify-evenly items-center bg-black-primary hover:bg-black-secondary shadow-button active:shadow-none active:translate-x-1 active:translate-y-1 border-2 border-primary-100 w-full' onClick={handleCreate}>Nueva cuenta</button>
       </li>
       {open && <NewAccountModal handleCreate={handleCreate} />}
     </>

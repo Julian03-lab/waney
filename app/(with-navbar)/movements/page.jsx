@@ -25,7 +25,7 @@ export default async function MovementsSection () {
   }
 
   return (
-    <div className='flex flex-col w-full gap-4 h-full'>
+    <div className='flex flex-col w-full gap-4 h-full lg:col-span-2'>
       <div className='flex justify-between items-center'>
         <h1 className='text-4xl text-center font-bold text-white'>Movimientos</h1>
         <Link href='/home' className='justify-self-end'>

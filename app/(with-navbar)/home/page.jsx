@@ -26,7 +26,7 @@ export default async function LandingPage () {
   const token = nextCookies.get('userID')
   return (
     <>
-      <section className='lg:col-span-2 flex flex-col items-center lg:justify-evenly gap-4 h-full'>
+      <section className='lg:col-span-2 flex flex-col items-center lg:justify-evenly py-2 gap-4 h-full'>
         <div className='flex flex-col gap-2 w-full'>
           <BalanceInfo token={token} />
         </div>

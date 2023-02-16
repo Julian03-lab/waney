@@ -3,7 +3,7 @@
 
 import { useRouter } from 'next/navigation'
 import { useEffect, useState } from 'react'
-import EmojiList from '../EmojiList'
+import EmojiList from 'app/components/EmojiList'
 import { auth } from 'app/services/firebaseClient'
 import Loader from 'app/components/Loader'
 import { updateCategoryDB } from '../addCategoryDB'

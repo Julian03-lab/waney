@@ -5,7 +5,7 @@ import { useState } from 'react'
 import { auth } from 'app/services/firebaseClient'
 import Loader from 'app/components/Loader'
 import addCategoryDB from '../addCategoryDB'
-import EmojiList from '../EmojiList'
+import EmojiList from 'app/components/EmojiList'
 
 export default function NewCategory () {
   const router = useRouter()
