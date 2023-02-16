@@ -20,8 +20,12 @@ module.exports = {
     colors: {
       transparent: colors.transparent,
       black: {
-        primary: '#191A1F',
-        secondary: '#202126'
+        // Azulada
+        // primary: '#0d1b2a',
+        // secondary: '#1b263b'
+        // Mas negra
+        primary: '#0b090a',
+        secondary: '#161a1d'
       },
       white: '#ebecee',
       primary: {
